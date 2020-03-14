@@ -1,0 +1,52 @@
+# -*- mode: ruby -*-
+# vi: set ft=ruby :
+
+Vagrant.configure(2) do |config|
+  config.vm.box = "ubuntu/bionic64"
+  config.vm.network "forwarded_port", guest: 8000, host: 8000
+  config.vm.provider "virtualbox" do |vb|
+    vb.cpus = 2
+    vb.memory = "2048"
+  end
+  config.vm.provision "shell", inline: <<-SHELL
+    sudo apt-get update && apt-get upgrade
+
+    # backend
+    if [ -d "/vagrant/back" ]; then
+      cd /vagrant/back
+
+      sudo apt-get install -y $(grep -vE "^\s*#" dependencies.txt | tr "\n" " ")
+
+      # install DB
+      DB_NAME="shop"
+      DB_USER="shop"
+      DB_PASSWORD="123456"
+      sudo apt-get install -y postgresql-10 postgresql-server-dev-10
+      sudo -u postgres psql -d template1 -c "CREATE ROLE $DB_USER LOGIN SUPERUSER INHERIT CREATEDB CREATEROLE REPLICATION"
+      sudo -u postgres psql -d template1 -c "ALTER  USER $DB_USER WITH PASSWORD '$DB_PASSWORD'"
+      sudo -u postgres psql -d template1 -c "CREATE DATABASE $DB_NAME WITH OWNER $DB_USER"
+
+      rm -rf .env 
+      python3.7 -m venv .env
+      source .env/bin/activate
+      pip install --upgrade pip
+      pip install --upgrade wheel
+      pip install -r requirements.txt
+      python manage.py migrate
+      # create superuser automatically
+      echo "from django.contrib.auth import get_user_model; User = get_user_model(); User.objects.create_superuser(username='admin', password='123456', email='admin@example.com')" | python manage.py shell
+      # auto activate .env
+      echo "cd /vagrant/back && source .env/bin/activate" >> /home/vagrant/.bashrc
+      deactivate
+    fi
+
+    # frontend
+    if [ -d "/vagrant/front" ]; then
+      cd /vagrant/front
+      curl -sL https://deb.nodesource.com/setup_13.x | sudo -E bash -
+      sudo apt-get install -y nodejs
+    fi
+
+  SHELL
+
+end

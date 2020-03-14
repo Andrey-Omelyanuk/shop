@@ -1,0 +1,24 @@
+# -------------------------------------------------------------------------------------------------
+# Base
+# -------------------------------------------------------------------------------------------------
+psycopg2                == 2.7.1    # Python-PostgreSQL Database Adapter
+# -------------------------------------------------------------------------------------------------
+# Django
+# -------------------------------------------------------------------------------------------------
+Django                  == 2.2      #
+djangorestframework     == 3.9.2    # Web APIs for Django, made easy.
+django-debug-toolbar    == 1.11     # A configurable set of panels that display various debug information about the current request/response.
+django-cors-headers     == 2.5.2    # For handling the server headers required for Cross-Origin Resource Sharing (CORS)
+django-mptt             == 0.8.7    # MPTT is a technique for storing hierarchical data in a database. The aim is to make retrieval operations very efficient.
+
+# -------------------------------------------------------------------------------------------------
+# Scrapy and dependencies
+# https://doc.scrapy.org/en/latest/intro/install.html#things-that-are-good-to-know
+# -------------------------------------------------------------------------------------------------
+Scrapy              == 1.6.0        # A high-level Python Screen Scraping framework.
+lxml                == 4.3.3        # Powerful and Pythonic XML processing library combining libxml2/libxslt with the ElementTree API.
+parsel              == 1.5.1        # Parsel is a library to extract data from HTML and XML using XPath and CSS selectors
+w3lib               == 1.20.0       # Library of web-related functions.
+Twisted             == 18.9.0       # Twisted is an event-driven networking engine for Python.
+cryptography        == 2.6.1        # cryptography is a package which provides cryptographic recipes and primitives to Python developers.
+pyOpenSSL           == 19.0.0       # Python wrapper module around the OpenSSL library.
