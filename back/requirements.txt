@@ -15,7 +15,7 @@ django-mptt             == 0.8.7    # MPTT is a technique for storing hierarchic
 # Scrapy and dependencies
 # https://doc.scrapy.org/en/latest/intro/install.html#things-that-are-good-to-know
 # -------------------------------------------------------------------------------------------------
-Scrapy              == 1.6.0        # A high-level Python Screen Scraping framework.
+Scrapy              == 1.8.2        # A high-level Python Screen Scraping framework.
 lxml                == 4.3.3        # Powerful and Pythonic XML processing library combining libxml2/libxslt with the ElementTree API.
 parsel              == 1.5.1        # Parsel is a library to extract data from HTML and XML using XPath and CSS selectors
 w3lib               == 1.20.0       # Library of web-related functions.
