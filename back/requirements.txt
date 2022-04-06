@@ -19,6 +19,6 @@ Scrapy              == 1.6.0        # A high-level Python Screen Scraping framew
 lxml                == 4.3.3        # Powerful and Pythonic XML processing library combining libxml2/libxslt with the ElementTree API.
 parsel              == 1.5.1        # Parsel is a library to extract data from HTML and XML using XPath and CSS selectors
 w3lib               == 1.20.0       # Library of web-related functions.
-Twisted             == 18.9.0       # Twisted is an event-driven networking engine for Python.
+Twisted             == 22.2.0       # Twisted is an event-driven networking engine for Python.
 cryptography        == 2.6.1        # cryptography is a package which provides cryptographic recipes and primitives to Python developers.
 pyOpenSSL           == 19.0.0       # Python wrapper module around the OpenSSL library.
